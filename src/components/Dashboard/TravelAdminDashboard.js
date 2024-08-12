@@ -4,8 +4,8 @@ import { useQuery } from 'react-query';
 import axios from 'axios';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import DocumentUploadModal from '../Modals/DocumentUploadModal';
-import RequestManagement from '../RequestManagement/RequestManagement';
+import DocumentUploadModal from './Modals/DocumentUploadModal';
+import RequestManagement from './Modals/RequestManagement';
 
 // Styled Components
 const Container = styled.div`
