@@ -1,17 +1,25 @@
-import React from 'react';
+﻿import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ThemeProvider } from 'styled-components';
+import GlobalStyles from './styles/GlobalStyles';
+import { AuthProvider } from './components/Auth/useAuth';
+import { lightTheme } from './styles/theme'; // Import the correct theme
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const queryClient = new QueryClient();
+const rootElement = document.getElementById('root');
+const root = ReactDOM.createRoot(rootElement);
+
 root.render(
   <React.StrictMode>
-    <App />
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={lightTheme}> {/* Use lightTheme as the default */}
+        <GlobalStyles />
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
